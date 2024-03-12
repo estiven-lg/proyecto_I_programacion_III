@@ -8,10 +8,8 @@ import com.umg.programacioniiiproyectoi.classes.Node;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- *
- * @author estiven
- */
+// rama estiven
+
 public class ProgramacionIIIProyectoI {
 
     public static void main(String[] args) {
