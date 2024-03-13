@@ -2,6 +2,8 @@ package com.umg.programacioniiiproyectoi.classes;
 
 import java.util.Collections;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Arméctic {
 
@@ -116,25 +118,33 @@ public class Arméctic {
         //(?=[-+*/^]) el siguiente caracter no es un operador
         //(?<=[a-zA-z]) el previo caracter es una variable
         //(?=[a-zA-z]) el siguiente caracter no es una variable
-        return operation.split("(?<=[-+*/^])|(?=[-+*/^])|(?=[a-zA-z])|(?<=[a-zA-z])");
+        return operation.split("(?<=[-+*/^()])|(?=[-+*/^()])|(?=[a-zA-z])|(?<=[a-zA-z])");
     }
 
-    static boolean evalOperation(String operation) {
+    static public String evalOperation(String operation) {
+        Matcher verificator;
+
         if ((operation.length() - operation.replace("(", "").length())
                 == operation.length() - operation.replace(")", "").length()) {
-            return false;
+            return "Hay un un parentensis incompleto";
         }
-        
-        if(!operation.matches("^[a-zA-Z0-9()+*\\-/^]*$")){
-              return false;
+
+        if (!operation.matches("^[a-zA-Z0-9()+*\\-/^]*$")) {
+            return "has ingresado un caracter no operable";
         }
-        
-        if(operation.matches( "^[*/^].*|[-+*/^]$")){
-            return false;
+
+        if (operation.matches("^[-+*/^].*|[-+*/^]$")) {
+            return "las operaciones no pueden terminar ni comenzar en signo";
         }
-        
-        
-        
-        return true;
+
+        verificator = Pattern.compile("(?<=[a-zA-Z0-9])[a-zA-Z]|(?<=[a-zA-Z])[a-zA-Z0-9]").matcher(operation);
+
+        if (verificator.find()) {
+            return "no puedes poner variables a par de otras variables";
+        }
+
+        verificator = Pattern.compile("(?<=[a-zA-])[a-zA-Z]|(?<=[a-zA-Z])[a-zA-Z0-9]").matcher(operation);
+
+        return "";
     }
 }

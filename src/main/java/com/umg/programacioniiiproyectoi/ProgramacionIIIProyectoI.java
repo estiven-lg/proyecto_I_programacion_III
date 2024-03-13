@@ -12,6 +12,6 @@ import java.util.regex.Pattern;
 public class ProgramacionIIIProyectoI {
 
 	public static void main(String[] args) {
-		System.out.print(Node.createTree("4*5+4+2"));
+		System.out.print( Pattern.compile("(?<=[a-zA-Z0-9])[a-zA-Z]|(?<=[a-zA-Z])[a-zA-Z0-9]").matcher("a+45+a").find());
 	}
 }
