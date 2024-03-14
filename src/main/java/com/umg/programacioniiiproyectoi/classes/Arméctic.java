@@ -117,6 +117,7 @@ public class Arméctic {
         //(?=[-+*/^]) el siguiente caracter no es un operador
         //(?<=[a-zA-z]) el previo caracter es una variable
         //(?=[a-zA-z]) el siguiente caracter no es una variable
+<<<<<<< HEAD
         return operation.trim().split("(?<=[-+*/^])|(?=[-+*/^])|(?=[a-zA-z])|(?<=[a-zA-z])");
     }
 
@@ -162,5 +163,6 @@ public class Arméctic {
         }
 
         return null;
+
     }
 }
