@@ -1,12 +1,15 @@
 package com.umg.programacioniiiproyectoi.classes;
 
-import java.util.Collections;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Arméctic {
 
+    /**
+     * @param c - caracter
+     * @return true si es un character del alfaneto . false si no lo es
+     */
     public static boolean isAlpha(char c) {
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
@@ -69,7 +72,6 @@ public class Arméctic {
         Stack<String> postfixOperation = new Stack<String>();
         Stack<String> stack = new Stack<String>();
 
-//        Collections.addAll(stack, infixOperation);
         for (int i = 0; i < infixOperation.length; i++) {
             String c = infixOperation[i];
 
@@ -118,33 +120,52 @@ public class Arméctic {
         //(?=[-+*/^]) el siguiente caracter no es un operador
         //(?<=[a-zA-z]) el previo caracter es una variable
         //(?=[a-zA-z]) el siguiente caracter no es una variable
-        return operation.split("(?<=[-+*/^()])|(?=[-+*/^()])|(?=[a-zA-z])|(?<=[a-zA-z])");
+
+        return operation.trim().split("(?<=[-+*/^])|(?=[-+*/^])|(?=[a-zA-z])|(?<=[a-zA-z])");
     }
 
+    /**
+     *
+     * @param operation operacion en texto a evaluar
+     * @return nulo si la operacion no tiene errrores
+     */
     static public String evalOperation(String operation) {
         Matcher verificator;
 
+        // valida que haya la mis cantidad de "(" y de ")"
         if ((operation.length() - operation.replace("(", "").length())
-                == operation.length() - operation.replace(")", "").length()) {
-            return "Hay un un parentensis incompleto";
+                != operation.length() - operation.replace(")", "").length()) {
+            return "***Hay un un parentensis incompleto";
         }
 
+        // valida que dentro de la operacion solo haya numeros, letras,signos operacio=
         if (!operation.matches("^[a-zA-Z0-9()+*\\-/^]*$")) {
-            return "has ingresado un caracter no operable";
+            return "***has ingresado un caracter no operable";
         }
 
-        if (operation.matches("^[-+*/^].*|[-+*/^]$")) {
-            return "las operaciones no pueden terminar ni comenzar en signo";
+        // valida que la operacion no empieze ni termine con signos
+        verificator = Pattern.compile("^[-+*/]|[-+*/]$").matcher(operation);
+
+        if (verificator.find()) {
+            return "***las operaciones no pueden terminar ni comenzar en signo";
         }
 
+        // valida que no haya letras o numeros a la par de letra
         verificator = Pattern.compile("(?<=[a-zA-Z0-9])[a-zA-Z]|(?<=[a-zA-Z])[a-zA-Z0-9]").matcher(operation);
 
         if (verificator.find()) {
-            return "no puedes poner variables a par de otras variables";
+            return "***no puedes poner variables a par de otras variables";
         }
 
-        verificator = Pattern.compile("(?<=[a-zA-])[a-zA-Z]|(?<=[a-zA-Z])[a-zA-Z0-9]").matcher(operation);
+        // validad que antes de abri un parentesis haya un signo seguido de una variable
+        // y al cerrar antes no haya un signo y despues haya un signo
+        verificator = Pattern.compile("(?<=[(])[-+*/^]|(?<=[a-zA-Z0-9])[(]|(?<=[)])[a-zA-Z0-9]|(?<=[-+*/^])[)]").matcher(operation);
 
-        return "";
+        if (verificator.find()) {
+            return "***estas mal usando los parentesis";
+        }
+
+        return null;
+
     }
 }
