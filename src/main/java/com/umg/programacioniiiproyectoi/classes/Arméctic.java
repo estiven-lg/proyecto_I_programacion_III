@@ -1,10 +1,37 @@
 package com.umg.programacioniiiproyectoi.classes;
 
+import java.util.Map;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Arméctic {
+
+    public static double calculate(Double num1, Double num2, String operating) {
+        switch (operating) {
+            case "+" -> {
+                return num1 + num2;
+            }
+            case "-" -> {
+                return num1 - num2;
+            }
+            case "*" -> {
+                return num1 * num2;
+            }
+            case "/" -> {
+                return num1 / num2;
+            }
+            case "^" -> {
+                return Math.pow(num1, num2);
+            }
+
+            default ->
+                throw new AssertionError();
+        }
+    }
+
+    ;
+    
 
     /**
      * @param c - caracter
@@ -69,8 +96,8 @@ public class Arméctic {
      */
     public static String[] operationToPostfix(String s) {
         String[] infixOperation = Arméctic.operationToArray(s);
-        Stack<String> postfixOperation = new Stack<String>();
-        Stack<String> stack = new Stack<String>();
+        Stack<String> postfixOperation = new Stack<>();
+        Stack<String> stack = new Stack<>();
 
         for (int i = 0; i < infixOperation.length; i++) {
             String c = infixOperation[i];
@@ -91,8 +118,8 @@ public class Arméctic {
             } // si el caracter es un operando
             else {
                 while (!stack.isEmpty()
-                        && (getHierarchy(s.charAt(i)) <= getHierarchy(stack.peek()))
-                        && (s.charAt(i) != '^')) {
+                        && (getHierarchy(infixOperation[i]) <= getHierarchy(stack.peek()))
+                        && (infixOperation[i] != "^")) {
                     postfixOperation.push(stack.pop());
 
                 }
@@ -121,7 +148,7 @@ public class Arméctic {
         //(?<=[a-zA-z]) el previo caracter es una variable
         //(?=[a-zA-z]) el siguiente caracter no es una variable
 
-        return operation.trim().split("(?<=[-+*/^])|(?=[-+*/^])|(?=[a-zA-z])|(?<=[a-zA-z])");
+        return operation.trim().split("(?<=[-+*/^])|(?=[-+*/^])|(?=[a-zA-z])|(?<=[a-zA-z])|(?<=[()])|(?=[()])");
     }
 
     /**
@@ -167,5 +194,21 @@ public class Arméctic {
 
         return null;
 
+    }
+
+    public static String getEvaluatedOperation(String operation, Map<String, Double> variables) {
+        String text = "";
+        String[] splitOperation = Arméctic.operationToArray(operation);
+
+        for (String str : splitOperation) {
+            if (Arméctic.isAlpha(str.charAt(0))) {
+                text += String.valueOf(variables.get(str.toUpperCase()));
+            } else {
+                text += str;
+            }
+
+        }
+
+        return text;
     }
 }
