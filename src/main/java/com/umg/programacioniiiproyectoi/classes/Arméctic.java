@@ -6,6 +6,10 @@ import java.util.regex.Pattern;
 
 public class Arméctic {
 
+    /**
+     * @param c - caracter
+     * @return true si es un character del alfaneto . false si no lo es
+     */
     public static boolean isAlpha(char c) {
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
@@ -68,7 +72,6 @@ public class Arméctic {
         Stack<String> postfixOperation = new Stack<String>();
         Stack<String> stack = new Stack<String>();
 
-//        Collections.addAll(stack, infixOperation);
         for (int i = 0; i < infixOperation.length; i++) {
             String c = infixOperation[i];
 
@@ -117,7 +120,7 @@ public class Arméctic {
         //(?=[-+*/^]) el siguiente caracter no es un operador
         //(?<=[a-zA-z]) el previo caracter es una variable
         //(?=[a-zA-z]) el siguiente caracter no es una variable
-<<<<<<< HEAD
+
         return operation.trim().split("(?<=[-+*/^])|(?=[-+*/^])|(?=[a-zA-z])|(?<=[a-zA-z])");
     }
 

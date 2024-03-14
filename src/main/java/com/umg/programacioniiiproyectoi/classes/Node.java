@@ -69,9 +69,9 @@ public class Node {
 	}
 
 	static public Node createTree(String operation) {
-		Stack<Node> tmpStack = new Stack<Node>();
+		Stack<Node> tmpStack = new Stack<>();
 		String[] listValue = Arméctic.operationToPostfix(operation);
-		for (String str : Arméctic.operationToPostfix(operation)) {
+		for (String str : listValue) {
 			if (Arméctic.isAlpha(str.charAt(0)) || Arméctic.isNumeric(str)) {
 				Node node = new Node(str);
 				tmpStack.push(node);
