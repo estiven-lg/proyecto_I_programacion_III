@@ -4,46 +4,46 @@ import java.util.Stack;
 
 public class Node {
 
-	private Node left;
-	private Node right;
-	private String label;
-	private String value;
+    private Node left;
+    private Node right;
+    private String label;
+    private String value;
 
-	public Node(String value) {
-		this.value = value;
-	}
+    public Node(String value) {
+        this.value = value;
+    }
 
-	public Node getLeft() {
-		return null;
-	}
+    public Node getLeft() {
+        return left;
+    }
 
-	public void setLeft(Node left) {
-		this.left = left;
-	}
+    public void setLeft(Node left) {
+        this.left = left;
+    }
 
-	public Node getRight() {
-		return null;
-	}
+    public Node getRight() {
+        return right;
+    }
 
-	public void setRight(Node right) {
-		this.right = right;
-	}
+    public void setRight(Node right) {
+        this.right = right;
+    }
 
-	public String getLabel() {
-		return null;
-	}
+    public String getLabel() {
+        return label;
+    }
 
-	public void setLabel(String label) {
-		this.label = label;
-	}
+    public void setLabel(String label) {
+        this.label = label;
+    }
 
-	public String getValue() {
-		return null;
-	}
+    public String getValue() {
+        return value;
+    }
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public void setValue(String value) {
+        this.value = value;
+    }
 
 
 	static public Node createTree(String operation) {
