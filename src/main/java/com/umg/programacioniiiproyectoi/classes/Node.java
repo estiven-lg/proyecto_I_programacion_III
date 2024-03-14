@@ -45,6 +45,31 @@ public class Node {
 		this.value = value;
 	}
 
+<<<<<<< HEAD
+=======
+	private String toString(Node node, int level, String arrow) {
+		String text = "";
+		if (node.getLeft() != null) {
+			text += toString(node.getLeft(), (level + 1), "->");
+		}
+
+		for (int i = 0; i < level * 2; i++) {
+			text += " ";
+		}
+		text += arrow + node.value + "\n";
+
+		if (node.getRight() != null) {
+			text += toString(node.getRight(), (level + 1), "->");
+		}
+
+		return text;
+	}
+
+	@Override
+	public String toString() {
+		return this.toString(this, 0, "");
+	}
+>>>>>>> Melany
 
 	static public Node createTree(String operation) {
 		Stack<Node> tmpStack = new Stack<Node>();
