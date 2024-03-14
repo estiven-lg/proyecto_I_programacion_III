@@ -1,7 +1,8 @@
 package com.umg.programacioniiiproyectoi.classes;
 
-import java.util.Collections;
 import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Arméctic {
 
@@ -116,25 +117,50 @@ public class Arméctic {
         //(?=[-+*/^]) el siguiente caracter no es un operador
         //(?<=[a-zA-z]) el previo caracter es una variable
         //(?=[a-zA-z]) el siguiente caracter no es una variable
-        return operation.split("(?<=[-+*/^])|(?=[-+*/^])|(?=[a-zA-z])|(?<=[a-zA-z])");
+        return operation.trim().split("(?<=[-+*/^])|(?=[-+*/^])|(?=[a-zA-z])|(?<=[a-zA-z])");
     }
 
-    static boolean evalOperation(String operation) {
+    /**
+     *
+     * @param operation operacion en texto a evaluar
+     * @return nulo si la operacion no tiene errrores
+     */
+    static public String evalOperation(String operation) {
+        Matcher verificator;
+
+        // valida que haya la mis cantidad de "(" y de ")"
         if ((operation.length() - operation.replace("(", "").length())
-                == operation.length() - operation.replace(")", "").length()) {
-            return false;
+                != operation.length() - operation.replace(")", "").length()) {
+            return "***Hay un un parentensis incompleto";
         }
-        
-        if(!operation.matches("^[a-zA-Z0-9()+*\\-/^]*$")){
-              return false;
+
+        // valida que dentro de la operacion solo haya numeros, letras,signos operacio=
+        if (!operation.matches("^[a-zA-Z0-9()+*\\-/^]*$")) {
+            return "***has ingresado un caracter no operable";
         }
-        
-        if(operation.matches( "^[*/^].*|[-+*/^]$")){
-            return false;
+
+        // valida que la operacion no empieze ni termine con signos
+        verificator = Pattern.compile("^[-+*/]|[-+*/]$").matcher(operation);
+
+        if (verificator.find()) {
+            return "***las operaciones no pueden terminar ni comenzar en signo";
         }
-        
-        
-        
-        return true;
+
+        // valida que no haya letras o numeros a la par de letra
+        verificator = Pattern.compile("(?<=[a-zA-Z0-9])[a-zA-Z]|(?<=[a-zA-Z])[a-zA-Z0-9]").matcher(operation);
+
+        if (verificator.find()) {
+            return "***no puedes poner variables a par de otras variables";
+        }
+
+        // validad que antes de abri un parentesis haya un signo seguido de una variable
+        // y al cerrar antes no haya un signo y despues haya un signo
+        verificator = Pattern.compile("(?<=[(])[-+*/^]|(?<=[a-zA-Z0-9])[(]|(?<=[)])[a-zA-Z0-9]|(?<=[-+*/^])[)]").matcher(operation);
+
+        if (verificator.find()) {
+            return "***estas mal usando los parentesis";
+        }
+
+        return null;
     }
 }
