@@ -10,7 +10,7 @@ public class Node {
 	private String value;
 
 	public Node(String value) {
-	
+		this.value = value;
 	}
 
 	public Node getLeft() {
@@ -18,7 +18,7 @@ public class Node {
 	}
 
 	public void setLeft(Node left) {
-	
+		this.left = left;
 	}
 
 	public Node getRight() {
@@ -26,7 +26,7 @@ public class Node {
 	}
 
 	public void setRight(Node right) {
-
+		this.right = right;
 	}
 
 	public String getLabel() {
@@ -34,7 +34,7 @@ public class Node {
 	}
 
 	public void setLabel(String label) {
-	
+		this.label = label;
 	}
 
 	public String getValue() {
@@ -42,7 +42,7 @@ public class Node {
 	}
 
 	public void setValue(String value) {
-	
+		this.value = value;
 	}
 
 
