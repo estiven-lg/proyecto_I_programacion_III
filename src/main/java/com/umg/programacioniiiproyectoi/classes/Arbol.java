@@ -1,5 +1,7 @@
 package com.umg.programacioniiiproyectoi.classes;
 
+import java.util.Objects;
+
 public class Arbol extends Node{
 	private Pila PilaNodes = new Pila();
 
@@ -13,7 +15,7 @@ public class Arbol extends Node{
             PilaNodes.pushIzquierda(nuevoNode);
         } else {
         	Node NodeActual = PilaNodes.getCima();
-            if (value != NodeActual.getValue()) {
+            if (!Objects.equals(Double.valueOf(value), NodeActual.getLabel())) {
                 NodeActual.setLeft(nuevoNode);
                 PilaNodes.pushIzquierda(nuevoNode);
             } else {
@@ -28,7 +30,7 @@ public class Arbol extends Node{
             return;
         }
         Node NodeActual = PilaNodes.getCima();
-        if (value == NodeActual.getValue()) {
+        if (value == NodeActual.getLabel()) {
             PilaNodes.pullIzquierda();
             if (!PilaNodes.esVacia()) {
                 NodeActual = PilaNodes.getCima();
@@ -38,7 +40,7 @@ public class Arbol extends Node{
                     PilaNodes.pushDerecha(NodeActual.getRight());
                 }
             }
-        } else if (value != NodeActual.getValue()) {
+        } else if (value != NodeActual.getLabel()) {
         	delete(value, NodeActual.getLeft());
         } else {
         	delete(value, NodeActual.getRight());
@@ -49,14 +51,14 @@ public class Arbol extends Node{
         if (Node == null) {
             return;
         }
-        if (value == Node.getValue()) {
+        if (value == Node.getLabel()) {
             PilaNodes.esVacia();
             if (Node.getLeft() != null) {
                 PilaNodes.pushIzquierda(Node.getLeft());
             } else if (Node.getRight() != null) {
                 PilaNodes.pushDerecha(Node.getRight());
             }
-        } else if (value != Node.getValue()) {
+        } else if (value != Node.getLabel()) {
         	delete(value, Node.getLeft());
         } else {
         	delete(value, Node.getRight());
