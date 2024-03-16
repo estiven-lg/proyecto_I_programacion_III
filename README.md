@@ -1,5 +1,5 @@
 ## ✨ proyecto_I_programacion_III✨
-| Nombre |Numero d ecarnet |
+| Nombre |Numero de carnet |
 | ------ | ------ |
 | Estiven Joel Laferre 🌻| 7690-22-2644|
 |🌹 Melany Romero Samayoa🌹 |7690-22-48
