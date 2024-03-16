@@ -1,4 +1,4 @@
-##✨ proyecto_I_programacion_III✨
+## ✨ proyecto_I_programacion_III✨
 | Nombre |Numero d ecarnet |
 | ------ | ------ |
 | Estiven Joel Laferre 🌻| 7690-22-2644|
@@ -11,7 +11,7 @@ nuestro programa,tiene estos 3 resultados,los cuales son:
 2. Resultado de la notación polaca🎎
 3. El árbol de forma gráfica🌲🌲🌲
 
-##😈Errores😈
+## 😈Errores😈
 A continuación se les precentara el proyecto de programaión   1el cual consiste eConsiste en realizar una aplicación que reciba en una caja de texto una expresión matemática limitada
 en sumas, restas, multiplicaciones, divisiones, potencias y raicesn:
 a + b – (c – d) +  e
