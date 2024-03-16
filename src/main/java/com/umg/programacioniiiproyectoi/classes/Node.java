@@ -48,9 +48,6 @@ public class Node {
 
     }
 
-
-
-
     public Node getLeft() {
         return left;
     }
@@ -83,14 +80,13 @@ public class Node {
         this.value = value;
     }
 
-        public Double getTotalValue() {
+    public Double getTotalValue() {
         if (Arméctic.getHierarchy(this.getLabel()) != -1) {
             return Arméctic.calculate(this.getLeft().getTotalValue(), this.getRight().getTotalValue(), this.getLabel());
         }
         return this.getValue();
     }
-    
-    
+
     public String getPostOrder() {
         String text = "";
 
@@ -140,8 +136,6 @@ public class Node {
         return text;
 
     }
-    
-
 
     static public Node createTree(String operation) {
         Stack<Node> tmpStack = new Stack<>();
@@ -160,7 +154,28 @@ public class Node {
         }
         return tmpStack.pop();
     }
-    
-    
+
+    private String toString(Node node, int level, String arrow) {
+        String text = "";
+
+        if (node.getRight() != null) {
+            text += toString(node.getRight(), (level + 1), "->");
+        }
+        for (int i = 0; i < level * 2; i++) {
+            text += " ";
+        }
+        text += arrow + node.getLabel() + "\n";
+
+        if (node.getLeft() != null) {
+            text += toString(node.getLeft(), (level + 1), "->");
+        }
+
+        return text;
+    }
+
+    @Override
+    public String toString() {
+        return this.toString(this, 0, "");
+    }
 
 }
