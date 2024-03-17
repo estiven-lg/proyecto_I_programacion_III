@@ -7,7 +7,7 @@
 |Brandon Rodriguez Blanco🌷| 7690-22-10255 |
 
 nuestro programa,tiene estos 3 resultados,los cuales son:
-1. El árbol de forma gráfica🌲🌲🌲
+1. El árbol de forma gráfica🌲🌲🌲 /n
    ![image](https://github.com/estiven-lg/proyecto_I_programacion_III/assets/95370813/796f04a1-fecd-4878-ac0f-958e4cfda73c)
 
 2. Recorridos del árbol🌳
