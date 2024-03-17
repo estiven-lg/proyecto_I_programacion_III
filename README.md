@@ -7,9 +7,16 @@
 |Brandon Rodriguez Blanco🌷| 7690-22-10255 |
 
 nuestro programa,tiene estos 3 resultados,los cuales son:
-1. Recorridos del árbol🌳
-2. Resultado de la notación polaca🎎
-3. El árbol de forma gráfica🌲🌲🌲
+1. El árbol de forma gráfica🌲🌲🌲
+   ![image](https://github.com/estiven-lg/proyecto_I_programacion_III/assets/95370813/796f04a1-fecd-4878-ac0f-958e4cfda73c)
+
+2. Recorridos del árbol🌳
+   ![image](https://github.com/estiven-lg/proyecto_I_programacion_III/assets/95370813/e9348cc9-c25b-4916-bdb3-7b62d19a977b)
+
+2. Resultado de la operacion
+   ![image](https://github.com/estiven-lg/proyecto_I_programacion_III/assets/95370813/de351890-2d2c-4af3-ad76-906e5035d162)
+
+
 
 ## 😈Errores😈
 A continuación se les presentara el proyecto de programación el cual consiste en realizar una aplicación que reciba un texto, una expresión matemática limitada
