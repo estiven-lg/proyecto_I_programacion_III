@@ -4,7 +4,6 @@
 | Estiven Joel Laferre 🌻| 7690-22-2644|
 |🌹 Melany Romero Samayoa🌹 |7690-22-48
 | Pebro Luis Alvarez Gonzalez🌼| 7690-22-5839 |
-|Brandon Rodriguez Blanco🌷| 7690-22-10255 |
 
 nuestro programa,tiene estos 3 resultados,los cuales son:
 1. El árbol de forma gráfica🌲🌲🌲
