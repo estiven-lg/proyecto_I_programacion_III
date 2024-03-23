@@ -26,8 +26,8 @@ public class ProgramacionIIIProyectoI {
 
         Node nodeRoot = Node.createTree(operation);
 
-        // System.out.println("--------------------------------");
-        // System.out.println(nodeRoot.toString());
+         System.out.println("--------------------------------");
+         System.out.println(nodeRoot.toString());
         System.out.println("--------------------------------");
 
         System.out.println("Pre-Orden:" + nodeRoot.getPreOrder());
